@@ -1,8 +1,9 @@
 FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+EFLAGS = -g -Wall -Wextra
 TARGET = exec
 
 all:
-	g++ main.cpp -o $(TARGET) $(FLAGS)
+	g++ main.cpp -o $(TARGET) $(FLAGS) $(EFLAGS)
 
 run:
 	./$(TARGET)

@@ -1,40 +1,15 @@
-#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-#include <thread>
-#include <mutex>
-#include <chrono>
-
-using namespace std;
-using namespace sf;
-
-class Player {
-public:
-    float x;
-    float y;
-
-    Player(float a, float b) {
-        x = a;
-        y = b;
-    }
-};
-
-mutex currentPos;
-
-void logicThread(Player *p1) {
-    
-}
+#include "include.h"
 
 int main() {
     VideoMode mode = VideoMode::getDesktopMode();
     RenderWindow window(mode, "Janela de teste", Style::Fullscreen);
-    
+    window.setFramerateLimit(60);
+
     Player p1(100.f, 200.f);
     
-    thread thread(&logicThread, &p1);
-
-    CircleShape circulo(100.f);
-    circulo.setFillColor(Color(146, 49, 176));
-    circulo.setPosition(200.f, 100.f);
+    RectangleShape fig({100.f, 100.f});
+    fig.setFillColor(Color(146, 49, 176));
     
     // Loop de lógica
     while(window.isOpen()) {
@@ -45,10 +20,28 @@ int main() {
             if(e.type == Event::Closed || (e.type == Event::KeyPressed && e.key.code == Keyboard::Escape)) 
                 window.close();
             
+            if(e.type == Event::KeyPressed) {
+       
+                switch (e.key.code) {
+                    case Keyboard::W :
+                        p1.y--; break;
+                    case Keyboard::A :
+                        p1.x--; break;
+                    case Keyboard::S :
+                        p1.y++; break;
+                    case Keyboard::D :
+                        p1.x++; break;
+                    default:
+                        break;
+                }
+            }
+
+            
         }
+        fig.setPosition(p1.x, p1.y);
 
         window.clear();
-        window.draw(circulo);
+        window.draw(fig);
         window.display();
     }
 }
