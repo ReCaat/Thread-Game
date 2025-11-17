@@ -1,47 +1,37 @@
 #include <SFML/Graphics.hpp>
+#include "Window/Mouse.hpp"
 #include "include.h"
 
 int main() {
-    VideoMode mode = VideoMode::getDesktopMode();
-    RenderWindow window(mode, "Janela de teste", Style::Fullscreen);
-    window.setFramerateLimit(60);
-
-    Player p1(100.f, 200.f);
+    // Esta função gera a janela principal do jogo
+    RenderWindow window(VideoMode(VideoMode::getDesktopMode()), "Jogo");
     
-    RectangleShape fig({100.f, 100.f});
-    fig.setFillColor(Color(146, 49, 176));
-    
-    // Loop de lógica
-    while(window.isOpen()) {
+    // Gera forma de circulo com raio 100px e coloca a cor para verde
+    CircleShape shape(100.f);
+    shape.setFillColor(Color::Green);
 
-        // Decta eventos no ultimo loop
-        Event e;        
-        while(window.pollEvent(e)) {
-            if(e.type == Event::Closed || (e.type == Event::KeyPressed && e.key.code == Keyboard::Escape)) 
+    // Loop de funcionamento da janela
+    while(window.isOpen()){
+
+        // Loop que verifica se o botão de fechar foi clicado
+        while(const optional event = window.pollEvent()){
+            // Se for clicado, fecha janela
+            if(event->is<Event::Closed>()){
                 window.close();
-            
-            if(e.type == Event::KeyPressed) {
-       
-                switch (e.key.code) {
-                    case Keyboard::W :
-                        p1.y--; break;
-                    case Keyboard::A :
-                        p1.x--; break;
-                    case Keyboard::S :
-                        p1.y++; break;
-                    case Keyboard::D :
-                        p1.x++; break;
-                    default:
-                        break;
-                }
             }
 
-            
-        }
-        fig.setPosition(p1.x, p1.y);
+            if(const auto* check_MousePress = event->is<Event::MouseButtonPressed()>){
 
+            }
+        }
+
+        // Limpa conteudo anterior
         window.clear();
-        window.draw(fig);
+
+        // Desenha o circulo na janela
+        window.draw(shape);
+
+        // Carrega na tela o conteudo renderizado
         window.display();
     }
 }

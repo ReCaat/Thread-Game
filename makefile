@@ -5,7 +5,7 @@ TARGET = exec
 all:
 	g++ main.cpp -o $(TARGET) $(FLAGS) $(EFLAGS)
 
-run:
+run: all
 	./$(TARGET)
 
 clean:
