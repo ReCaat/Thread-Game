@@ -1,9 +1,10 @@
-FLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+FLAGS = -l raylib
 EFLAGS = -g -Wall -Wextra
 TARGET = exec
+LINKS = cobra.cpp comida.cpp
 
 all:
-	g++ main.cpp -o $(TARGET) $(FLAGS) $(EFLAGS)
+	g++ main.cpp $(LINKS) -o $(TARGET) $(FLAGS) $(EFLAGS)
 
 run: all
 	./$(TARGET)
