@@ -1,3 +1,10 @@
-# Setup SFML
+## Setup raylib
 
-sudo apt install libsfml-dev build-essential
+sudo apt install raylib
+
+## Etapas de build
+
+cd build
+cmake ..
+make
+./exec

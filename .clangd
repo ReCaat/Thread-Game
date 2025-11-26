@@ -1,5 +1,0 @@
-CompileFlags:
-  Add:
-    - -I/usr/include
-    - -I/usr/include/SFML
-    - -std=c++20
