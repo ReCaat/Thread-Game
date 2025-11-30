@@ -3,4 +3,4 @@
 cd build
 cmake ..
 make
-./exec
+./Thread-Game
