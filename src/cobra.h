@@ -24,7 +24,7 @@ public:
 
     int get_size(); // retorna tamanho da cobra
 
-    bool is_player() const { return playerType; }
+    bool is_player() const { return playerType; }   // retorna se player1 ou player 2 é aquela cobra
 
     // movimento
     void set_direction(int d); // Função que coloca as regras pra direção da cobra (não pode virar 180)
@@ -36,9 +36,9 @@ public:
     void apply_move(bool grow);          // Função que aplica o movimento
 
     // Checks
-    bool check_wall(int gridW, int gridH) const;
-    bool check_self_collision() const;
-    bool check_enemy_collision(Snake &enemy) const;
+    bool check_wall(int gridW, int gridH) const;  // Verifica colisão da cobra com a parede
+    bool check_self_collision() const;      // Verifica se a cobra bate no próprio corpo
+    bool check_enemy_collision(Snake &enemy) const;      // Verifica se essa a cobra bateu no corpo do inimigo
 
     // Função de comer comida, retira uma comida do vetor de comida
     bool consume_food(vector<Food>& foods);

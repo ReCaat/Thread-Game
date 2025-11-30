@@ -45,6 +45,7 @@ void Snake::scan_inputs(){
 }
 
 pair<int,int> Snake::next_head() const {
+    // Calcula a proxima posição da cabeça
     auto head = body.front();
     if (direction == 0) return { head.first, head.second - 1 };
     if (direction == 1) return { head.first, head.second + 1 };

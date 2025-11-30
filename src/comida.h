@@ -15,10 +15,10 @@ public:
     ~Food() = default;
 
     // Funcoes auxiliares
-    int getX() const { return pos.first; }
-    int getY() const { return pos.second; }
-    void setPos(int x, int y) { pos = {x,y}; }
-    void draw(int cellSize) const;
+    int getX() const { return pos.first; } // Obtém posição X
+    int getY() const { return pos.second; } // Obtém posição Y
+    void setPos(int x, int y) { pos = {x,y}; }  // Define uma nova posição
+    void draw(int cellSize) const;  // Faz a rendereização
 };
 
 #endif
